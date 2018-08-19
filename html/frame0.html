@@ -177,10 +177,22 @@ mescroll = new MeScroll("mescroll", {
 				if (!isAppend) {listDom.innerHTML = "";}
 				for (var i = 0; i < curPageData.length; i++) {
 					var newObj=curPageData[i];
+          switch (newObj.status) {
+            case '1':
+              var status = '<div class="aui-label aui-label-info">Schdualed</div>';
+              break;
+            case '2':
+            var status = '<div class="aui-label aui-label-warning">In Process</div>';
+              break;
+            case '3':
+            var status = '<div class="aui-label aui-label-success">Finished</div>';
+              break;
+
+          }
 
 
 					var str='<div class="card"><div class="innerContainer"><p class="time" id="time">'+newObj.time+'</p>';
-          str+='<div class="aui-pull-right Status"><div class="aui-label aui-label-info" id="status">'+newObj.time+'</div></div><div><img src="dot.png" width="100%" alt=""></div><div><p class="location" id="location">Campus:'+newObj.location;
+          str+='<div class="aui-pull-right Status">'+ status +'</div><div><img src="dot.png" width="100%" alt=""></div><div><p class="location" id="location">Campus:'+newObj.location;
           str+='</p><p class="course" id="course">Course:'+newObj.Description+'</p><p class="lecturer" id="lecturer">Lecturer:'+newObj.lecturer+'</p></div><p>Room:</p><h1 id="room">';
           str+= newObj.room+'</h1></div></div>';
           var liDom=document.createElement("div");
@@ -213,7 +225,7 @@ mescroll = new MeScroll("mescroll", {
     success: function (data) {
     	var newArr=[];
     for (var i = 0; i < data.count; i++) {
-	              var newObj={id:data.classList[i].id, Description:data.classList[i].Description, time:data.classList[i].time, room:data.classList[i].room, lecturer:data.classList[i].lecturer, location:data.classList[i].location};
+	              var newObj={id:data.classList[i].id, Description:data.classList[i].Description, time:data.classList[i].time, status:data.classList[i].status, room:data.classList[i].room, lecturer:data.classList[i].lecturer, location:data.classList[i].location};
 	                			newArr.push(newObj);
 	                		}
 

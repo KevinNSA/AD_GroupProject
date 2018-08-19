@@ -40,6 +40,11 @@
         .aui-bar-nav .aui-bar-btn-item.aui-active{
           color: #FF4472;
         }
+        .menu{
+          background-color: #FF4472;
+          color: #fff;
+          font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -52,8 +57,8 @@
         <div class="aui-bar-btn-item">Tomorrow</div>
     </div>
 </header></li>
-            <li class="border-b" style="padding-top:25px;">School Active</li>
-            <li class="border-b" style="padding-top:25px;">Account Setting</li>
+            <li class="border-b menu" style="padding-top:25px;">Events</li>
+            <li class="border-b menu" style="padding-top:25px;">Account Setting</li>
         </ul>
     </header>
     <div id="main" class="flex-con">
@@ -62,7 +67,7 @@
     <div id="footer" class="border-t">
         <ul class="flex-wrap" >
             <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con active" >Class</li>
-            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >Active</li>
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >Events</li>
             <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >Account</li>
         </ul>
     </div>
@@ -185,6 +190,11 @@ funIniGroup();
         api.setFrameGroupIndex({
             name: 'group',
             index: index
+        });
+        var tab = new auiTab({
+            element:document.getElementById("tabControl"),
+            index:1,
+            repeatClick:false
         });
     }
 </script>
