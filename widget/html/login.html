@@ -140,7 +140,6 @@ function login(){
   var  myselect=document.getElementById("moduleSelect");
   var index=myselect.selectedIndex;
   var moduleId = myselect.options[index].value;
-  var moduleName = myselect.options[index].text;
 var name = document.getElementById('name').value;
 
 if (name=='') {
@@ -161,8 +160,7 @@ success: function (data) {
     key: 'userinfo',
     value: {
       id: data.userid,
-      name: name,
-      moduleName: moduleName
+      name: name
     }
   });
 if (navigator.language=='zh-CN') {
