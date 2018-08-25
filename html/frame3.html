@@ -148,18 +148,19 @@
               </div>
             </div>
 
-            <!-- <span class="aui-margin-t-15 aui-padded-l-10 title">About</span>
-
+<div id="about" hidden="true">
+            <span class="aui-margin-t-15 aui-padded-l-10 title">About</span>
             <div class="aui-info aui-margin-t-10 aui-padded-l-10 aui-padded-r-10">
                 <div class="aui-info-item">
-                  <span>Support By:</span>
+                  <span id="term1"></span>
                     </div>
                 <div class="aui-info-item">
-                  <div class="aui-list-item-input">
+                  <div class="aui-list-item-input" id="term2">
                     kevin@nsa.vc
                 </div>
               </div>
-            </div> -->
+            </div>
+          </div>
 
 <input type="text" id="userId" style="display: none;">
     <!-- <div class="footer">Power By 热点新加坡</div> -->
@@ -188,6 +189,22 @@ apiready = function () {
     }
   });
 
+  $.ajax({
+url: 'http://redian.io/timetable/getAbout.php',
+type: "POST",
+dataType:'json',
+data: {
+key: 'helloKugou'
+},
+success: function (data) {
+  if (data.status=='1') {
+    document.getElementById('about').hidden = false;
+    document.getElementById('term1').innerHTML = data.term1;
+    document.getElementById('term2').innerHTML = data.term2;
+
+  }
+}
+});
 
 }
 
